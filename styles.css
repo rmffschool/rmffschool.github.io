@@ -71,8 +71,8 @@ body {
   font-family: 'Geist', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   background: var(--bg);
   color: var(--fg);
-  font-size: 16px;
-  line-height: 1.55;
+  font-size: 17px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-feature-settings: "ss01", "cv11";
@@ -377,7 +377,7 @@ section { position: relative; }
   text-wrap: balance;
 }
 .section-head h2 em { font-style: italic; color: var(--accent); }
-.section-head .kicker { color: var(--fg-mute); font-size: 18px; margin-top: 18px; max-width: 58ch; }
+.section-head .kicker { color: var(--fg-mute); font-size: 20px; margin-top: 18px; max-width: 58ch; }
 
 /* ======================== ABOUT ======================== */
 .about-grid {
@@ -385,7 +385,7 @@ section { position: relative; }
   grid-template-columns: 200px 1fr;
   gap: 48px;
 }
-.about-body { display: grid; gap: 24px; font-size: 18px; color: var(--fg); max-width: 68ch; }
+.about-body { display: grid; gap: 24px; font-size: 20px; color: var(--fg); max-width: 68ch; }
 .about-body p { margin: 0; }
 .about-body p .drop {
   font-family: 'Instrument Serif', serif;
@@ -522,7 +522,7 @@ section { position: relative; }
   letter-spacing: -0.01em;
 }
 .speaker .meta .aff {
-  font-size: 12px; color: var(--fg-mute);
+  font-size: 13px; color: var(--fg-mute);
 }
 .speaker .meta .topic {
   margin-top: 8px; padding-top: 10px;
@@ -532,7 +532,7 @@ section { position: relative; }
   color: var(--accent);
 }
 .speaker .meta .bio {
-  font-size: 13px; line-height: 1.55; color: var(--fg-mute);
+  font-size: 15px; line-height: 1.6; color: var(--fg-mute);
   margin-top: 4px;
 }
 
@@ -580,7 +580,7 @@ section { position: relative; }
 }
 .lecture-blurb {
   color: var(--fg-mute);
-  font-size: 15px; line-height: 1.55;
+  font-size: 17px; line-height: 1.6;
   margin: 0;
 }
 .lecture-speakers {
@@ -605,7 +605,7 @@ section { position: relative; }
   font-size: 12px; color: var(--fg-mute);
 }
 .lecture-speakers .names {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--fg);
 }
 
@@ -626,14 +626,14 @@ section { position: relative; }
   font-size: 32px; line-height: 1; margin: 0;
   letter-spacing: -0.01em;
 }
-.venue-card .addr { color: var(--fg-mute); font-size: 15px; line-height: 1.6; }
+.venue-card .addr { color: var(--fg-mute); font-size: 17px; line-height: 1.65; }
 .venue-card .info {
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
   margin-top: auto;
   padding-top: 16px; border-top: 1px solid var(--line-soft);
 }
 .venue-card .info .k { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-dim); }
-.venue-card .info .v { font-size: 14px; }
+.venue-card .info .v { font-size: 16px; }
 
 .venue-card .venue-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -718,7 +718,7 @@ section { position: relative; }
   margin: 10px 0 0;
 }
 .apply h2 em { font-style: italic; color: var(--accent); }
-.apply p { color: var(--fg-mute); font-size: 17px; margin: 18px 0 28px; max-width: 54ch; }
+.apply p { color: var(--fg-mute); font-size: 19px; margin: 18px 0 28px; max-width: 54ch; }
 .apply-dates {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
 }
