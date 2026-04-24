@@ -88,10 +88,11 @@
     ];
 
     const SPONSORS = [
-      { name: "AGIMUS", src: "assets/agimus_logo.png", grant: "No. 101070165" },
-      { name: "ERC FRONTIER", src: "assets/ERC logo.png", grant: "No. 101097822", label: "ERC Frontier", big: true },
-      { name: "ELLIOT", src: "assets/ELLIOT_maincolor.svg", grant: "No. 101214398" },
-      { name: "ELIAS", src: "assets/elias_logo.png", grant: "No. 101120237" },
+      { name: "AGIMUS", src: "assets/agimus_logo.png", grant: "No. 101070165", url: "https://www.agimus-project.eu/" },
+      { name: "ERC FRONTIER", src: "assets/ERC logo.png", grant: "No. 101097822", label: "ERC Frontier", big: true, url: "https://impact.ciirc.cvut.cz" },
+      { name: "ELLIOT", src: "assets/ELLIOT_maincolor.svg", grant: "No. 101214398", url: "https://elliot-ai.eu/" },
+      { name: "ELIAS", src: "assets/elias_logo.png", grant: "No. 101120237", url: "https://elias-ai.eu/" },
+      { name: "CIIRC CTU", src: "assets/czech_institute_of_informatics_robotics_and_cybernetic_png.png", grant: "Host institution", url: "https://www.ciirc.cvut.cz/" },
     ];
 
     /* ----- SHARED COMPONENTS ----- */
@@ -483,17 +484,22 @@
             <Reveal>
               <div className="sponsors-grid">
                 {SPONSORS.map((s) => (
-                  <div className={`sponsor ${s.big ? 'sponsor-big' : ''}`} key={s.name}>
-                    {s.wordmark
-                      ? <div className="sponsor-wordmark">{s.wordmark}</div>
-                      : <img src={s.src} alt={s.name} />}
+                  <a
+                    className={`sponsor ${s.big ? 'sponsor-big' : ''}`}
+                    key={s.name}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener"
+                    aria-label={s.name}
+                  >
+                    <img src={s.src} alt={s.name} />
                     {s.label && <div className="sponsor-label">{s.label}</div>}
                     <div className="tag">{s.grant}</div>
-                  </div>
+                  </a>
                 ))}
               </div>
               <div className="funding-note">
-                <img src="assets/eu_flag.svg" alt="EU flag" />
+                <img src="assets/EN-Funded by the EU-POS.png" alt="Funded by the European Union" />
                 <div>
                   Supported by the European Union's Horizon Europe projects <strong>AGIMUS</strong> (No. 101070165), <strong>ERC FRONTIER</strong> (No. 101097822), <strong>ELLIOT</strong> (No. 101214398), and <strong>ELIAS</strong> (No. 101120237).
                 </div>
