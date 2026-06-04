@@ -989,12 +989,10 @@ section { position: relative; }
 /* ======================== RED BOX (announce + slido) ======================== */
 .redbox {
   --rb: #e0241b;
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
+  flex-wrap: wrap;
   align-items: stretch;
-  gap: 0;
   margin: 0 0 28px;
-  max-width: 720px;
   border: 1.5px solid var(--rb);
   border-radius: var(--radius-lg);
   background: color-mix(in srgb, var(--rb) 6%, var(--bg-card));
@@ -1009,8 +1007,14 @@ section { position: relative; }
   transition: background var(--t);
 }
 .redbox-cell:hover { background: color-mix(in srgb, var(--rb) 12%, transparent); }
-.redbox-schedule { flex-direction: row; }
-.redbox-slido { border-left: 1.5px solid color-mix(in srgb, var(--rb) 30%, transparent); }
+.redbox-schedule { flex: 1 1 240px; }
+.redbox-slido { flex: 0 1 auto; }
+.redbox-notice { flex: 1 1 260px; align-items: flex-start; }
+.redbox-slido,
+.redbox-notice { border-left: 1.5px solid color-mix(in srgb, var(--rb) 30%, transparent); }
+.redbox-notice .redbox-tag { margin-top: 2px; }
+.redbox-notice .slido-join { font-size: 14px; line-height: 1.45; }
+.redbox-notice .redbox-cta { margin-top: 6px; }
 
 .redbox-tag {
   display: inline-flex; align-items: center; gap: 7px;
@@ -1206,8 +1210,9 @@ section { position: relative; }
   .program-row .kind { grid-column: 2; justify-self: start; }
   .timeline::before { left: 71px; }
   .tl-row { grid-template-columns: 52px 16px 1fr; gap: 12px; }
-  .redbox { grid-template-columns: 1fr; max-width: 100%; }
-  .redbox-slido { border-left: 0; border-top: 1.5px solid color-mix(in srgb, var(--rb) 30%, transparent); }
+  .redbox { flex-direction: column; }
+  .redbox-slido,
+  .redbox-notice { border-left: 0; border-top: 1.5px solid color-mix(in srgb, var(--rb) 30%, transparent); }
   .hero-meta { grid-template-columns: 1fr; gap: 16px; }
   .about-stats { grid-template-columns: repeat(2, 1fr); }
   .apply { padding: 40px 28px; }
