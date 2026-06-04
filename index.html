@@ -87,6 +87,43 @@
         speakers: [{ name: "Florent Lamiraux", photo: "assets/florent.jpeg" }] },
     ];
 
+    const SCHEDULE = [
+      { day: "Day 1", date: "Mon · Jun 8", rows: [
+        { time: "09:00", title: "Coffee & welcome", kind: "break" },
+        { time: "09:30", title: "Welcome presentation", kind: "milestone" },
+        { time: "09:40", title: "Class #1 · Sample-Based Trajectory Optimization", who: "Armand Jordana", kind: "class" },
+        { time: "10:45", title: "Coffee break", kind: "break" },
+        { time: "11:15", title: "Class #1 (cont.) · Sample-Based Trajectory Optimization", who: "Armand Jordana", kind: "class" },
+        { time: "12:30", title: "Lunch break", kind: "break" },
+        { time: "13:30", title: "Invited talk", who: "Majid Khadiv", kind: "talk" },
+        { time: "14:30", title: "Class #2 · Rigid-Body Simulation for Robotics", who: "Ajay Sathya · Justin Carpentier", kind: "class" },
+        { time: "16:00", title: "Coffee break", kind: "break" },
+        { time: "16:30", title: "Class #2 (cont.) · Rigid-Body Simulation for Robotics", who: "Ajay Sathya · Justin Carpentier", kind: "class" },
+        { time: "17:30", title: "AGIMUS Final Event", kind: "milestone", fig: "assets/agimus_final_event.png" },
+        { time: "19:00", title: "Social · RoboBar & Poster session", kind: "social" },
+      ]},
+      { day: "Day 2", date: "Tue · Jun 9", rows: [
+        { time: "09:00", title: "Class #3 · Optimal Control", who: "Nicolas Mansard · Ludovic Righetti", kind: "class" },
+        { time: "10:30", title: "Class #3 (cont.) · Optimal Control", who: "Nicolas Mansard · Ludovic Righetti", kind: "class" },
+        { time: "12:00", title: "Coffee break", kind: "break" },
+        { time: "12:30", title: "Invited talk", who: "Ludovic Righetti", kind: "talk" },
+        { time: "13:30", title: "Lunch break", kind: "break" },
+        { time: "14:30", title: "Class #4 · Robot Learning", who: "Efstratios Gavves", kind: "class" },
+        { time: "16:00", title: "Coffee break", kind: "break" },
+        { time: "16:30", title: "Invited talk", who: "Efstratios Gavves", kind: "talk" },
+        { time: "17:30", title: "End of day 2", kind: "milestone" },
+        { time: "19:30", title: "Concert at CIIRC · Mosty rezonance", note: "Optional", kind: "social" },
+      ]},
+      { day: "Day 3", date: "Wed · Jun 10", rows: [
+        { time: "09:00", title: "Class #5 · Object Pose Estimation", who: "Vladimír Petrík", kind: "class" },
+        { time: "10:30", title: "Coffee break", kind: "break" },
+        { time: "11:00", title: "Invited talk", who: "Josef Sivic", kind: "talk" },
+        { time: "12:00", title: "Lunch break", kind: "break" },
+        { time: "13:00", title: "Class #6 · TAMP — Task and Motion Planning", who: "Florent Lamiraux", kind: "class" },
+        { time: "15:00", title: "End of RMFF", kind: "milestone" },
+      ]},
+    ];
+
     const SPONSORS = [
       { name: "AGIMUS", src: "assets/agimus_logo.png", grant: "No. 101070165", url: "https://www.agimus-project.eu/" },
       { name: "ERC FRONTIER", src: "assets/ERC logo.png", grant: "No. 101097822", label: "ERC Frontier", big: true, url: "https://impact.ciirc.cvut.cz" },
@@ -171,6 +208,7 @@
             <div className="nav-links">
               <a href="#top">Home</a>
               <a href="#program">Program</a>
+              <a href="#schedule">Schedule</a>
               <a href="#venue">Venue</a>
               <a className="btn primary" href={SCHOOL.applyUrl} target="_blank" rel="noopener">Register <ArrowIcon /></a>
             </div>
@@ -184,6 +222,25 @@
       return (
         <header className="hero hero-type" id="top">
           <div className="container">
+            <Reveal>
+              <div className="redbox">
+                <a className="redbox-cell redbox-schedule" href="#schedule">
+                  <span className="redbox-tag"><span className="announce-dot" />New</span>
+                  <div className="redbox-main">
+                    <div className="redbox-title">The detailed program is now available</div>
+                    <div className="redbox-cta">View schedule <ArrowIcon /></div>
+                  </div>
+                </a>
+                <a className="redbox-cell redbox-slido" href="https://app.sli.do/event/heX3tzXrBmowpKrM6voEsf" target="_blank" rel="noopener">
+                  <img className="slido-qr" src="assets/QR Code for RMFF.png" alt="Slido Q&A QR code" />
+                  <div className="slido-text">
+                    <div className="redbox-tag redbox-tag-ghost">Online Q&amp;A</div>
+                    <div className="slido-join">Join at <strong>slido.com</strong></div>
+                    <div className="slido-code">#1582 8082</div>
+                  </div>
+                </a>
+              </div>
+            </Reveal>
             <Reveal as="span" className="eyebrow">
               <span className="pulse" />
               Summer School · Jun 8—10, 2026
@@ -345,6 +402,66 @@
       );
     }
 
+    function Schedule() {
+      const [active, setActive] = useState(0);
+      const [fig, setFig] = useState(null);
+      const day = SCHEDULE[active];
+      useEffect(() => {
+        if (!fig) return;
+        const onKey = (e) => { if (e.key === 'Escape') setFig(null); };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+      }, [fig]);
+      return (
+        <section className="section" id="schedule">
+          <div className="container">
+            <Reveal className="section-head">
+              <div className="label"><span className="num">04</span>Schedule</div>
+              <div>
+                <h2>The full <em>day-by-day</em> timeline, from morning classes to evening socials.</h2>
+                <div className="kicker">All times are Europe / Prague (CEST, UTC+2). Lectures are also live-streamed to online participants.</div>
+              </div>
+            </Reveal>
+            <Reveal>
+              <div className="program-tabs" role="tablist">
+                {SCHEDULE.map((d, i) => (
+                  <button key={d.day} className={i === active ? 'active' : ''} onClick={() => setActive(i)}>
+                    {d.day.toUpperCase()} · {d.date.split(' · ')[0].toUpperCase()}
+                  </button>
+                ))}
+              </div>
+              <ol className="timeline">
+                {day.rows.map((r, i) => (
+                  <li className={`tl-row tl-${r.kind}`} key={i}>
+                    <div className="tl-time">{r.time}</div>
+                    <div className="tl-dot" aria-hidden="true" />
+                    <div className="tl-body">
+                      <div className="tl-title">
+                        {r.fig ? (
+                          <button type="button" className="tl-fig-link" onClick={() => setFig(r.fig)}>
+                            {r.title}
+                            <span className="tl-fig-tag">View poster ↗</span>
+                          </button>
+                        ) : r.title}
+                        {r.note && <span className="tl-note">{r.note}</span>}
+                      </div>
+                      {r.who && <div className="tl-who">{r.who}</div>}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </Reveal>
+          </div>
+          {fig && (
+            <div className="lightbox" onClick={() => setFig(null)} role="dialog" aria-modal="true">
+              <button className="lightbox-close" aria-label="Close" onClick={() => setFig(null)}>×</button>
+              <img src={fig} alt="AGIMUS Final Event" onClick={(e) => e.stopPropagation()} />
+            </div>
+          )}
+        </section>
+      );
+    }
+
     function Apply() {
       return (
         <section className="section" id="apply">
@@ -401,7 +518,7 @@
         <section className="section" id="venue">
           <div className="container">
             <Reveal className="section-head">
-              <div className="label"><span className="num">04</span>Venue</div>
+              <div className="label"><span className="num">05</span>Venue</div>
               <div>
                 <h2>CIIRC, <em>Czech Technical University</em> in Prague.</h2>
                 <div className="kicker">A short tram ride from the Old Town; five minutes from Dejvická metro (Line A). All lectures are on-site.</div>
@@ -477,7 +594,7 @@
         <section className="section" id="sponsors">
           <div className="container">
             <Reveal className="section-head">
-              <div className="label"><span className="num">05</span>Supported by</div>
+              <div className="label"><span className="num">06</span>Supported by</div>
               <div>
                 <h2>European <em>research projects</em> supporting the school.</h2>
               </div>
@@ -530,6 +647,7 @@
                 <ul>
                   <li><a href="#top">Home</a></li>
                   <li><a href="#program">Program</a></li>
+                  <li><a href="#schedule">Schedule</a></li>
                   <li><a href="#venue">Venue</a></li>
                   <li><a href="#apply">Register</a></li>
                 </ul>
@@ -569,6 +687,7 @@
             <About />
             <Speakers />
             <Lectures />
+            <Schedule />
             <Apply />
             <Venue />
             <Sponsors />
